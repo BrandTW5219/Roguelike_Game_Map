@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8k35rranlktq"]
+
+[ext_resource type="Script" path="res://battle/battle.gd" id="1_j8nyy"]
+[ext_resource type="Script" path="res://battle/cards/cards.gd" id="3_ce0bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1ope"]
+size = Vector2(3600, 1000)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_j8nyy")
+
+[node name="Battle" type="Node2D" parent="."]
+position = Vector2(-800, -450)
+
+[node name="Line2D" type="Line2D" parent="Battle"]
+points = PackedVector2Array(0, 0, 1600, 0, 1600, 675, 0, 675, 0, 0)
+
+[node name="Wall" type="StaticBody2D" parent="Battle"]
+position = Vector2(800, -500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Wall"]
+shape = SubResource("RectangleShape2D_m1ope")
+
+[node name="Wall2" type="StaticBody2D" parent="Battle"]
+position = Vector2(800, 1175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Wall2"]
+shape = SubResource("RectangleShape2D_m1ope")
+
+[node name="Wall3" type="StaticBody2D" parent="Battle"]
+position = Vector2(2100, 337.5)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Wall3"]
+shape = SubResource("RectangleShape2D_m1ope")
+
+[node name="Wall4" type="StaticBody2D" parent="Battle"]
+position = Vector2(-500, 337.5)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battle/Wall4"]
+shape = SubResource("RectangleShape2D_m1ope")
+
+[node name="Balls" type="Node2D" parent="Battle"]
+position = Vector2(800, 450)
+
+[node name="Cards" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -450.0
+offset_top = 225.0
+offset_right = 450.0
+offset_bottom = 450.0
+script = ExtResource("3_ce0bt")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 593.0
+offset_top = 306.0
+offset_right = 681.0
+offset_bottom = 369.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "開始"
+
+[node name="BallStopChecker" type="Timer" parent="."]
+
+[connection signal="child_order_changed" from="Cards" to="Cards" method="_on_child_order_changed"]
+[connection signal="button_down" from="StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="timeout" from="BallStopChecker" to="." method="_on_ball_stop_checker_timeout"]

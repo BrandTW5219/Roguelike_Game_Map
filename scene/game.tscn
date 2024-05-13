@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://drv367igqfxwx"]
+
+[ext_resource type="Script" path="res://scene/game.gd" id="1_2cvxg"]
+[ext_resource type="PackedScene" uid="uid://btw8o3scvcmpe" path="res://object/entity/player/player.tscn" id="2_du2yn"]
+[ext_resource type="PackedScene" uid="uid://b8k35rranlktq" path="res://battle/battle.tscn" id="3_4ejnf"]
+[ext_resource type="AudioStream" uid="uid://2ekq0a3cq7y" path="res://audio/running.mp3" id="4_t4f7q"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_2cvxg")
+
+[node name="Player" parent="." instance=ExtResource("2_du2yn")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Battle" parent="." instance=ExtResource("3_4ejnf")]
+position = Vector2(10000, 0)
+
+[node name="Camera2D2" type="Camera2D" parent="Battle"]
+scale = Vector2(0.5, 0.5)
+enabled = false
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_t4f7q")
+autoplay = true

@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsjyjrgvxhbnu"]
+
+[ext_resource type="PackedScene" uid="uid://d2rvpn1ogwx0s" path="res://battle/cards/card_base.tscn" id="1_c5dso"]
+[ext_resource type="Script" path="res://room/choose_card_system.gd" id="1_jp7xd"]
+
+[node name="ChooseCardSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jp7xd")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 250
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CardBase" parent="CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_c5dso")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 225)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "選擇"
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CardBase1" parent="CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("1_c5dso")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 225)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "選擇"
+
+[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CardBase2" parent="CenterContainer/HBoxContainer/PanelContainer3/MarginContainer/VBoxContainer" instance=ExtResource("1_c5dso")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 225)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/PanelContainer3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "選擇"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/PanelContainer3/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

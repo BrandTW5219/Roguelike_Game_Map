@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://btw8o3scvcmpe"]
+
+[ext_resource type="Script" path="res://object/entity/player/player.gd" id="1_vpxa4"]
+[ext_resource type="Texture2D" uid="uid://cpeml2dpsq6rd" path="res://image/-1.png" id="2_eoerg"]
+[ext_resource type="Texture2D" uid="uid://c0vungjfbncwv" path="res://image/-2.png" id="3_l446g"]
+[ext_resource type="Texture2D" uid="uid://mqbet7t0l4x4" path="res://image/-3.png" id="4_ur480"]
+[ext_resource type="Texture2D" uid="uid://cfu7m4hu5wffx" path="res://image/-4.png" id="5_aipym"]
+[ext_resource type="AudioStream" uid="uid://2ekq0a3cq7y" path="res://audio/running.mp3" id="6_3fup5"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4yy0w"]
+frames = 4
+speed_scale = 5.0
+frame_0/texture = ExtResource("2_eoerg")
+frame_1/texture = ExtResource("3_l446g")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_ur480")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_aipym")
+frame_3/duration = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21ek4"]
+radius = 19.0
+height = 86.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+script = ExtResource("1_vpxa4")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AnimatedTexture_4yy0w")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_21ek4")
+
+[node name="RunningAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3fup5")
